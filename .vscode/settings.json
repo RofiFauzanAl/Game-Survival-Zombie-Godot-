@@ -1,0 +1,16 @@
+{
+    "spellright.language": [
+        "id"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "gitignore"
+    ],
+    "spellright.parserByClass": {
+        "gitignore": {
+            "parser": "plain"
+        }
+    }
+}
