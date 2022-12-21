@@ -1,8 +1,5 @@
 extends Spatial
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var list_weapon = {}
 
 var weapons = {}
@@ -19,6 +16,7 @@ var unequip_weapon = false
 func _ready():
 	pass # Replace with function body.
 	hud = owner.get_node("HUD")
+	get_parent().get_node("View fps/RayCast").add_exception(owner)
 	
 	list_weapon = {
 		"pistol" : preload("res://Scene/Weapon/pistol.tscn"),
@@ -37,6 +35,7 @@ func _ready():
 		if weapons[w] != null:
 			weapons[w].weapon_manage = self
 			weapons[w].player = owner
+			weapons[w].ray = get_parent().get_node("View fps/RayCast")
 			weapons[w].visible = false
 	
 	#set current weapon to knife
@@ -45,6 +44,19 @@ func _ready():
 	
 	#disable process
 	set_process(false)
+
+
+# Firing and Reloading
+func fire():
+	if not changing_weapon:
+		current_weapon.fire()
+
+func fire_stop():
+	current_weapon.fire_stop()
+
+func reload():
+	if not changing_weapon:
+		current_weapon.reload()
 
 
 func _process(delta):
@@ -83,10 +95,12 @@ func change_weapon(new_weapon_slot):
 	
 	set_process(true)
 
+
+
 func update_hud(weapon_data):
 	var weapon_slot_equip = "1"
 	
-	match current_weapon:
+	match weapon_slot:
 		"Empty" :
 			weapon_slot_equip = "1"
 		"Primary" :
@@ -94,4 +108,4 @@ func update_hud(weapon_data):
 		"Secondary" :
 			weapon_slot_equip = "3"
 	
-	hud.update_weapon_ui(weapon_data, weapon_slot_equip)
+	hud.update_weapon_ui(weapon_data, weapon_slot)

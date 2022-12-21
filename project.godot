@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Weapon",
+"class": "Armed_weapon",
+"language": "GDScript",
+"path": "res://GDscript/Armed.gd"
+}, {
 "base": "Spatial",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://GDscript/weapon.gd"
 } ]
 _global_script_class_icons={
+"Armed_weapon": "",
 "Weapon": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Zombie Survival"
 run/main_scene="res://Scene/Arena/Arena.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://GDscript/Singleton/Global.gd"
 
 [gui]
 
@@ -68,6 +78,16 @@ primary={
 secondary={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":51,"unicode":0,"echo":false,"script":null)
+ ]
+}
+fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+reload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -1,4 +1,4 @@
-extends Weapon
+extends Armed_weapon
 
 func _ready():
 	animation_player = $AnimationPlayer

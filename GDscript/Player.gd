@@ -44,7 +44,7 @@ func controling_movement_inputs():
 
 
 func _physics_process(delta):
-	move_and_slide(fall, Vector3.UP)
+	#move_and_slide(fall, Vector3.UP)
 	
 	if not is_on_floor():
 		fall.y -= gravity
@@ -59,6 +59,17 @@ func _physics_process(delta):
 	
 	#calling function input movement control
 	controling_movement_inputs()
+	
+	
+	# Firing
+	if Input.is_action_pressed("fire"):
+		weapon_manage.fire()
+	if Input.is_action_just_released("fire"):
+		weapon_manage.fire_stop()
+	
+	# Reloading
+	if Input.is_action_just_pressed("reload"):
+		weapon_manage.reload()
 	
 	
 	#show the cursor mouse
