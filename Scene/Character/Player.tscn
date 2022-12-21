@@ -1,6 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GDscript/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Weapon/pistol.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/Weapon/Knife.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/Weapon/AK-47.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GDscript/Weapon_manage.gd" type="Script" id=5]
+[ext_resource path="res://Scene/HUD_UI/Status_hud.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GDscript/pistol.gd" type="Script" id=7]
+[ext_resource path="res://GDscript/Knife.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -19,8 +26,31 @@ transform = Transform( 1, 0, 0, 0, 0.0135957, -0.999908, 0, 0.999908, 0.0135957,
 shape = SubResource( 2 )
 
 [node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11302, 0 )
 
 [node name="View fps" type="Camera" parent="Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57641, -0.132544 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0343872, 0.62805, -0.251736 )
+
+[node name="Weapon" type="Spatial" parent="Head"]
+script = ExtResource( 5 )
+
+[node name="AK_47" parent="Head/Weapon" instance=ExtResource( 4 )]
+transform = Transform( -1.27872, 0.00044524, -0.0151873, 0, 0.84215, 0.0193574, 0.0260486, 0.0218567, -0.745539, 1.351, -0.776, -1.657 )
+visible = false
+weapon_name = "AK-47"
+
+[node name="pistol" parent="Head/Weapon" instance=ExtResource( 2 )]
+transform = Transform( -0.999845, 0, -0.0176269, 0, 1, 0, 0.0176269, 0, -0.999845, 1.528, -0.127, -1.928 )
+visible = false
+script = ExtResource( 7 )
+weapon_name = "Dessert Eagle"
+
+[node name="Knife" parent="Head/Weapon" instance=ExtResource( 3 )]
+transform = Transform( 0.638454, 0, 0, 0, 0.00299657, 0.252851, 0, -0.181092, 0.00418399, 1.073, -0.013, -2.304 )
+visible = false
+script = ExtResource( 8 )
+weapon_name = "Knife"
 
 [node name="RayCast" type="RayCast" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]

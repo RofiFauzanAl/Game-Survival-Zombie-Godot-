@@ -502,4 +502,4 @@ shape = SubResource( 61 )
 shape = SubResource( 62 )
 
 [node name="KinematicBody" parent="." index="144" instance=ExtResource( 2 )]
-transform = Transform( 0.737123, 0, 0, 0, 0.687064, 0, 0, 0, 0.694856, 13.2757, 0.228272, 0.00990725 )
+transform = Transform( 0.636725, 0, 0, 0, 0.567796, 0, 0, 0, 0.602007, 13.2757, 0.228272, 0.00990725 )
