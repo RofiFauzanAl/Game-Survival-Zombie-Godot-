@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GDscript/Player.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="CapsuleShape" id=2]
+
+[node name="KinematicBody" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.00179773, 0.999998, 0, -0.999998, 0.00179773, -1.52588e-05, 1.40375, 0.00847936 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+physics_interpolation_mode = 1
+transform = Transform( 1, 0, 0, 0, 0.0135957, -0.999908, 0, 0.999908, 0.0135957, 0.000819713, 1.40648, 0.00234926 )
+shape = SubResource( 2 )
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="View fps" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57641, -0.132544 )
+
+[node name="RayCast" type="RayCast" parent="."]
